@@ -6,6 +6,7 @@ from base import Suite
 
 import plugins.whitespace
 import plugins.unicode
+import plugins.ref_line_format
 
 suite = Suite()
 suite.add_plugin(plugins.whitespace, {
@@ -19,3 +20,10 @@ suite.add_plugin(plugins.unicode, {
     "CONFIRM_UTF_8_NFC": True,
 })
 suite.validate_files(sorted(glob.glob("tests/*.txt")))
+
+suite.add_plugin(plugins.ref_line_format, {
+    "REF_REGEX": r"(\d+|EP|SB)\.\d+(\.\d+)?$",  # example from AF
+})
+suite.validate_files([
+    "tests/test_0007.txt", "tests/test_0008.txt", "tests/test_0009.txt"
+])
