@@ -8,11 +8,13 @@ class RefLineFormat(Plugin):
 
     def validate_line(self, filename, line_num, line):
 
-        def error(message):
-            self.error_callback(filename, line_num, message)
+        def error(message, offset=None):
+            self.error_callback(filename, line_num, offset, message)
 
-        l = line.decode("utf-8")
-        parts = l.strip().split()
+        encoding = self.config.get("ENCODING", "utf-8")
+        decoded_line = line.decode(encoding)
+
+        parts = decoded_line.strip().split()
 
         # there can be no blank lines
 
@@ -21,7 +23,7 @@ class RefLineFormat(Plugin):
 
         # tokens must be split by a single space
 
-        if parts and l != " ".join(parts) + "\n":
+        if parts and decoded_line != " ".join(parts) + "\n":
             error("BAD WHITESPACE")
 
         # the first token must be a reference of the form given in the

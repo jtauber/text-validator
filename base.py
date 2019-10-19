@@ -17,8 +17,8 @@ class Plugin:
         pass
 
 
-def error_callback(filename, line_num, error):
-    print(f"{filename}:{line_num}:{error}", file=sys.stderr)
+def error_callback(filename, line_num, offset, error):
+    print(f"{filename}:{line_num}:{offset or ''}:{error}", file=sys.stderr)
 
 
 class Suite:

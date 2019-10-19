@@ -5,28 +5,34 @@ class Whitespace(Plugin):
 
     def validate_line(self, filename, line_num, line):
 
-        def error(message):
-            self.error_callback(filename, line_num, message)
+        def error(message, offset=None):
+            self.error_callback(filename, line_num, offset, message)
+
+        encoding = self.config.get("ENCODING", "utf-8")
+        decoded_line = line.decode(encoding)
 
         if self.config.get("CHECK_CRLF"):
-            if line.endswith(b"\r\n"):
+            if decoded_line.endswith("\r\n"):
                 error("line ends with CRLF")
 
         if self.config.get("CHECK_TABS"):
-            if b"\t" in line:
-                error("line contains a tab")
+            if "\t" in decoded_line:
+                error("line contains a tab", decoded_line.find("\t"))
 
         if self.config.get("CHECK_TRAILING_WHITESPACE"):
-            if line.rstrip(b"\n").endswith((b" ", b"\t")):
+            if decoded_line.rstrip("\n").endswith((" ", "\t")):
                 error("trailing whitespace")
 
     def validate_last_line(self, filename, line_num, line):
 
-        def error(message):
-            self.error_callback(filename, line_num, message)
+        def error(message, offset=None):
+            self.error_callback(filename, line_num, offset, message)
+
+        encoding = self.config.get("ENCODING", "utf-8")
+        decoded_line = line.decode(encoding)
 
         if self.config.get("CHECK_NO_EOF_NEWLINE"):
-            if not line.endswith(b"\n"):
+            if not decoded_line.endswith("\n"):
                 error("no newline at end of file")
 
 

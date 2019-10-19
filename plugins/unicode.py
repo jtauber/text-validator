@@ -7,8 +7,8 @@ class Unicode(Plugin):
 
     def validate_line(self, filename, line_num, line):
 
-        def error(message):
-            self.error_callback(filename, line_num, message)
+        def error(message, offset=None):
+            self.error_callback(filename, line_num, offset, message)
 
         utf_8_line = line.decode("utf-8")
 
