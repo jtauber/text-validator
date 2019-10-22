@@ -21,8 +21,17 @@ suite.validate_files(sorted(glob.glob("tests/*.txt")))
 suite.add_plugin(plugins.ref_line_format, {
     "REF_REGEX": r"(\d+|EP|SB)\.\d+(\.\d+)?$",  # example from AF
 })
+suite.add_plugin(plugins.characters, {
+    "REPLACE_CHARS": [
+        ("\u02BC", "\u2019"),  # bad character, suggested replacement
+        ("\u1FBF", "\u2019"),
+    ],
+})
 suite.validate_files([
-    "tests/test_0007.txt", "tests/test_0008.txt", "tests/test_0009.txt"
+    "tests/test_0007.txt",
+    "tests/test_0008.txt",
+    "tests/test_0009.txt",
+    "tests/test_0010.txt",
 ])
 ```
 
@@ -41,4 +50,6 @@ tests/test_0008.txt:1:BAD WHITESPACE
 tests/test_0008.txt:2:BAD WHITESPACE
 tests/test_0009.txt:4:BAD REFERENCE FORM
 tests/test_0009.txt:5:BAD REFERENCE FORM
+tests/test_0010.txt:2:29:bad U+02BC; consider replacing with U+2019
+tests/test_0010.txt:3:29:bad U+1FBF; consider replacing with U+2019
 ```
