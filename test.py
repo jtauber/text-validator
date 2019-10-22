@@ -30,6 +30,12 @@ suite.add_plugin(plugins.characters, {
     "REPLACE_CHARS": [
         ("\u02BC", "\u2019"),  # bad character, suggested replacement
         ("\u1FBF", "\u2019"),
+        ("\u037E", "\u003B"),
+        ("\u0387", "\u00B7"),
+        ("\u0374", "\u02B9"),
+        ("\u03D5", "\u03C6"),
+        ("\u03D1", "\u03B8"),
+
     ],
 })
 suite.validate_files([
