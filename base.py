@@ -5,7 +5,6 @@ import toml
 
 
 class Plugin:
-
     def __init__(self, error_callback, config):
         self.config = config
         self.error_callback = error_callback
@@ -25,7 +24,6 @@ def error_callback(filename, line_num, offset, error):
 
 
 class Suite:
-
     def __init__(self):
         self.plugins = []
 
