@@ -1,4 +1,7 @@
+import importlib
 import sys
+
+import toml
 
 
 class Plugin:
@@ -26,7 +29,14 @@ class Suite:
     def __init__(self):
         self.plugins = []
 
-    def add_plugin(self, module, config):
+    def load_toml(self, filename):
+        with open(filename) as f:
+            config = toml.load(f)
+            for plugin_name, plugin_config in config.items():
+                self.add_plugin(plugin_name, plugin_config)
+
+    def add_plugin(self, module_name, config):
+        module = importlib.import_module(module_name)
         self.plugins.append(module.plugin(error_callback, config))
 
     def validate_files(self, filenames):

@@ -1,46 +1,40 @@
 #!/usr/bin/env python3
 
-import glob
-
 from base import Suite
 
-import plugins.whitespace
-import plugins.unicode
-import plugins.ref_line_format
-import plugins.characters
-
+suite = Suite()
+suite.load_toml("tests/config_001.toml")
+suite.validate_files([
+    "tests/test_0001.txt",
+    "tests/test_0002.txt",
+    "tests/test_0003.txt",
+    "tests/test_0004.txt",
+])
 
 suite = Suite()
-suite.add_plugin(plugins.whitespace, {
-    "CHECK_CRLF": True,
-    "CHECK_TABS": True,
-    "CHECK_TRAILING_WHITESPACE": True,
-    "CHECK_NO_EOF_NEWLINE": True,
-})
-suite.add_plugin(plugins.unicode, {
-    "CONFIRM_UTF_8_NFD": True,
-    "CONFIRM_UTF_8_NFC": True,
-})
-suite.validate_files(sorted(glob.glob("tests/*.txt")))
+suite.load_toml("tests/config_002.toml")
+suite.validate_files([
+    "tests/test_0005.txt",  # should pass
+    "tests/test_0006.txt",  # should fail
+])
 
-suite.add_plugin(plugins.ref_line_format, {
-    "REF_REGEX": r"(\d+|EP|SB)\.\d+(\.\d+)?$",  # example from AF
-})
-suite.add_plugin(plugins.characters, {
-    "REPLACE_CHARS": [
-        ("\u02BC", "\u2019"),  # bad character, suggested replacement
-        ("\u1FBF", "\u2019"),
-        ("\u037E", "\u003B"),
-        ("\u0387", "\u00B7"),
-        ("\u0374", "\u02B9"),
-        ("\u03D5", "\u03C6"),
-        ("\u03D1", "\u03B8"),
+suite = Suite()
+suite.load_toml("tests/config_003.toml")
+suite.validate_files([
+    "tests/test_0005.txt",  # should fail
+    "tests/test_0006.txt",  # should pass
+])
 
-    ],
-})
+suite = Suite()
+suite.load_toml("tests/config_004.toml")
 suite.validate_files([
     "tests/test_0007.txt",
     "tests/test_0008.txt",
     "tests/test_0009.txt",
+])
+
+suite = Suite()
+suite.load_toml("tests/config_005.toml")
+suite.validate_files([
     "tests/test_0010.txt",
 ])

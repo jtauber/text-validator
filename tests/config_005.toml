@@ -1,0 +1,11 @@
+["plugins.characters"]
+REPLACE_CHARS = [
+    # bad character, suggested replacement
+    ["\u02BC", "\u2019"],
+    ["\u1FBF", "\u2019"],
+    ["\u037E", "\u003B"],
+    ["\u0387", "\u00B7"],
+    ["\u0374", "\u02B9"],
+    ["\u03D5", "\u03C6"],
+    ["\u03D1", "\u03B8"],
+]
