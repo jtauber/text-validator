@@ -49,4 +49,20 @@ tests/test_0010.txt:2:29:bad U+02BC; consider replacing with U+2019
 tests/test_0010.txt:3:29:bad U+1FBF; consider replacing with U+2019
 ```
 
-(see `test.py` for how to run)
+You can either run from the command line:
+
+```
+./main.py tests/config_004.toml tests/test_0007.txt tests/test_0008.txt tests/test_0009.txt
+```
+
+or programmatically from Python:
+
+```
+from base import Suite
+
+suite = Suite()
+suite.load_toml("tests/config_004.toml")
+suite.validate_files(
+    ["tests/test_0007.txt", "tests/test_0008.txt", "tests/test_0009.txt"]
+)
+```
