@@ -5,15 +5,19 @@ import argparse
 from base import Suite
 
 
+def validate(config, files):
+    suite = Suite()
+    suite.load_toml(config)
+    suite.validate_files(files)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("config", help="toml file configuring validator plugins")
     parser.add_argument("files", nargs="+", help="file(s) to validate")
     args = parser.parse_args()
 
-    suite = Suite()
-    suite.load_toml(args.config)
-    suite.validate_files(args.files)
+    validate(args.config, args.files)
 
 
 if __name__ == "__main__":

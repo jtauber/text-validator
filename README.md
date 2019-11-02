@@ -55,14 +55,20 @@ You can either run from the command line:
 ./main.py tests/config_004.toml tests/test_0007.txt tests/test_0008.txt tests/test_0009.txt
 ```
 
-or programmatically from Python:
+or programmatically from Python, either with the help function `validate`:
+
+```
+from main import validate
+
+validate("tests/config_003.toml", ["tests/test_0005.txt", "tests/test_0006.txt"])
+```
+
+or by working directly with a Suite instance:
 
 ```
 from base import Suite
 
 suite = Suite()
-suite.load_toml("tests/config_004.toml")
-suite.validate_files(
-    ["tests/test_0007.txt", "tests/test_0008.txt", "tests/test_0009.txt"]
-)
+suite.load_toml("tests/config_002.toml")
+suite.validate_files(["tests/test_0005.txt", "tests/test_0006.txt"])
 ```
