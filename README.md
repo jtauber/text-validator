@@ -55,10 +55,10 @@ You can either run from the command line:
 validate-text tests/config_004.toml tests/test_0007.txt tests/test_0008.txt tests/test_0009.txt
 ```
 
-or programmatically from Python, either with the help function `validate`:
+or programmatically from Python, either with the helper function `validate`:
 
 ```
-from main import validate
+from text_validator.main import validate
 
 validate("tests/config_003.toml", ["tests/test_0005.txt", "tests/test_0006.txt"])
 ```
@@ -66,7 +66,7 @@ validate("tests/config_003.toml", ["tests/test_0005.txt", "tests/test_0006.txt"]
 or by working directly with a Suite instance:
 
 ```
-from base import Suite
+from text_validator.base import Suite
 
 suite = Suite()
 suite.load_toml("tests/config_002.toml")
