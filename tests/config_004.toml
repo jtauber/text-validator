@@ -1,8 +1,8 @@
-["plugins.whitespace"]
+["text_validator.plugins.whitespace"]
 CHECK_CRLF = true
 CHECK_TABS = true
 CHECK_TRAILING_WHITESPACE = true
 CHECK_NO_EOF_NEWLINE = true
 
-["plugins.ref_line_format"]
+["text_validator.plugins.ref_line_format"]
 REF_REGEX = "(\\d+|EP|SB)\\.\\d+(\\.\\d+)?$"  # example from AF

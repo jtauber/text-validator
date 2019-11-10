@@ -1,4 +1,4 @@
-["plugins.characters"]
+["text_validator.plugins.characters"]
 REPLACE_CHARS = [
     # bad character, suggested replacement
     ["\u02BC", "\u2019"],

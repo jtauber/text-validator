@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-from base import Suite
-from main import validate
+from text_validator.base import Suite
+from text_validator.main import validate
 
 # you can call validate
 

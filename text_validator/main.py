@@ -2,7 +2,7 @@
 
 import argparse
 
-from base import Suite
+from .base import Suite
 
 
 def validate(config, files):

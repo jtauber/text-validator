@@ -1,2 +1,2 @@
-["plugins.unicode"]
+["text_validator.plugins.unicode"]
 CONFIRM_UTF_8_NFC = true

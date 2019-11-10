@@ -9,7 +9,7 @@ flake8 = "*"
 black = "==19.10b0"
 
 [packages]
-toml = "*"
+text-validator = {path = "."}
 
 [requires]
 python_version = "3.7"

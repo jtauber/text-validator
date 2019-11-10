@@ -1,4 +1,4 @@
-["plugins.whitespace"]
+["text_validator.plugins.whitespace"]
 CHECK_CRLF = true
 CHECK_TABS = true
 CHECK_TRAILING_WHITESPACE = true

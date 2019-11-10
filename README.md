@@ -6,19 +6,19 @@ pluggable command-line tool for validating the formatting and orthography of tex
 You config your validator plugins with a TOML file like:
 
 ```
-["plugins.whitespace"]
+["text_validator.plugins.whitespace"]
 CHECK_CRLF = true
 CHECK_TABS = true
 CHECK_TRAILING_WHITESPACE = true
 CHECK_NO_EOF_NEWLINE = true
 
-["plugins.unicode"]
+["text_validator.plugins.unicode"]
 CONFIRM_UTF_8_NFC = true
 
-["plugins.ref_line_format"]
+["text_validator.plugins.ref_line_format"]
 REF_REGEX = "(\\d+|EP|SB)\\.\\d+(\\.\\d+)?$"  # example from AF
 
-["plugins.characters"]
+["text_validator.plugins.characters"]
 REPLACE_CHARS = [
     # bad character, suggested replacement
     ["\u02BC", "\u2019"],
@@ -52,7 +52,7 @@ tests/test_0010.txt:3:29:bad U+1FBF; consider replacing with U+2019
 You can either run from the command line:
 
 ```
-./main.py tests/config_004.toml tests/test_0007.txt tests/test_0008.txt tests/test_0009.txt
+validate-text tests/config_004.toml tests/test_0007.txt tests/test_0008.txt tests/test_0009.txt
 ```
 
 or programmatically from Python, either with the help function `validate`:

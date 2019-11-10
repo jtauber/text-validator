@@ -1,12 +1,10 @@
 import unicodedata
 
-from base import Plugin
+from text_validator.base import Plugin
 
 
 class Unicode(Plugin):
-
     def validate_line(self, filename, line_num, line):
-
         def error(message, offset=None):
             self.error_callback(filename, line_num, offset, message)
 
