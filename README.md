@@ -49,7 +49,13 @@ tests/test_0010.txt:2:29:bad U+02BC; consider replacing with U+2019
 tests/test_0010.txt:3:29:bad U+1FBF; consider replacing with U+2019
 ```
 
-You can either run from the command line:
+To install:
+
+```
+pip install text-validator
+```
+
+Then you can either run from the command line:
 
 ```
 validate-text tests/config_004.toml tests/test_0007.txt tests/test_0008.txt tests/test_0009.txt
