@@ -1,0 +1,6 @@
+["text_validator.plugins.characters"]
+TOKEN_REGEXES = [
+    # each whitespace-separated token must match one of these regexes
+    "[A-Za-z\\-]+('s)?[.,]?$",  # English (simplified for testing)
+    "[\u0370-\u03FF]+[.,]?$",  # Greek (simpified for testing)
+]

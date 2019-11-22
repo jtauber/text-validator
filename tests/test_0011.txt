@@ -1,0 +1,4 @@
+Here we want to make sure each whitespace-separated token follows one of a fixed set of regular expressions.
+So far everything has only used the English alpha plus punctuation.
+But we also want to allow Greek words like λόγος.
+What we want to catch, though, is things like λόγoς where the penultimate character is actually the LATIN SMALL LETTER O even though it's hard to tell.

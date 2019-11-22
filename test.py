@@ -29,3 +29,4 @@ validate(
     ["tests/test_0007.txt", "tests/test_0008.txt", "tests/test_0009.txt"],
 )
 validate("tests/config_005.toml", ["tests/test_0010.txt"])
+validate("tests/config_006.toml", ["tests/test_0011.txt"])
