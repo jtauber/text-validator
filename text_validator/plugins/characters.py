@@ -34,10 +34,9 @@ class Characters(Plugin):
                         token_hex = " ".join(f"U+{ord(ch):04X}" for ch in token)
                         error(
                             f"token {token} [{token_hex}] did not match any TOKEN_REGEXES",
-                            i
+                            i,
                         )
                 i += len(token)
-
 
 
 plugin = Characters
