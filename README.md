@@ -78,3 +78,9 @@ suite = Suite()
 suite.load_toml("tests/config_002.toml")
 suite.validate_files(["tests/test_0005.txt", "tests/test_0006.txt"])
 ```
+
+Also see:
+
+* [Plugin Directory](https://github.com/jtauber/text-validator/wiki/Plugin-Directory)
+* [How to Write a Plugin](https://github.com/jtauber/text-validator/wiki/How-to-Write-a-Plugin)
+
