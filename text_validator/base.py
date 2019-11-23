@@ -5,9 +5,8 @@ import toml
 
 
 class Plugin:
-    def __init__(self, error_callback, config):
+    def __init__(self, config):
         self.config = config
-        self.error_callback = error_callback
 
     def validate_line(self, filename, line_num, line):
         pass
@@ -18,9 +17,8 @@ class Plugin:
     def validate_last_line(self, filename, line_num, line):
         pass
 
-
-def error_callback(filename, line_num, offset, error):
-    print(f"{filename}:{line_num}:{offset or ''}:{error}", file=sys.stderr)
+    def error_callback(self, filename, line_num, offset, error):
+        print(f"{filename}:{line_num}:{offset or ''}:{error}", file=sys.stderr)
 
 
 class Suite:
@@ -35,7 +33,7 @@ class Suite:
 
     def add_plugin(self, module_name, config):
         module = importlib.import_module(module_name)
-        self.plugins.append(module.plugin(error_callback, config))
+        self.plugins.append(module.plugin(config))
 
     def validate_files(self, filenames):
         for filename in filenames:
