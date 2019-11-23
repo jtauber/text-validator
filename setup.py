@@ -6,7 +6,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="text-validator",
-    version="0.2",
+    version="0.3",
     description="pluggable command-line tool for validating the formatting "
     "and orthography of text files",
     url="http://github.com/jtauber/text-validator",
