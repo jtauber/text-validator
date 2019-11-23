@@ -83,4 +83,5 @@ Also see:
 
 * [Plugin Directory](https://github.com/jtauber/text-validator/wiki/Plugin-Directory)
 * [How to Write a Plugin](https://github.com/jtauber/text-validator/wiki/How-to-Write-a-Plugin)
+* [Setting Up a GitHub Action](https://github.com/jtauber/text-validator/wiki/Setting-up-a-GitHub-Action)
 
