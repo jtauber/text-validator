@@ -34,6 +34,7 @@ class Suite:
         self.plugins.append(module.plugin(self.error_callback, config))
 
     def validate_files(self, filenames):
+        self.error_count = 0
         for filename in filenames:
             with open(filename, "rb") as f:
                 line_num = 0
@@ -45,6 +46,8 @@ class Suite:
                         plugin.validate_line(filename, line_num, line)
                 for plugin in self.plugins:
                     plugin.validate_last_line(filename, line_num, line)
+        return self.error_count == 0
 
     def error_callback(self, filename, line_num, offset, error):
         print(f"{filename}:{line_num}:{offset or ''}:{error}", file=sys.stderr)
+        self.error_count += 1

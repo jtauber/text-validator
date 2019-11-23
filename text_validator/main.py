@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+import sys
 
 from .base import Suite
 
@@ -8,7 +9,7 @@ from .base import Suite
 def validate(config, files):
     suite = Suite()
     suite.load_toml(config)
-    suite.validate_files(files)
+    return suite.validate_files(files)
 
 
 def main():
@@ -17,7 +18,9 @@ def main():
     parser.add_argument("files", nargs="+", help="file(s) to validate")
     args = parser.parse_args()
 
-    validate(args.config, args.files)
+    valid = validate(args.config, args.files)
+    if not valid:
+        sys.exit(1)
 
 
 if __name__ == "__main__":
